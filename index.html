@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Music Player</title>
+<meta name="description" content="A small browser music player for listening while you browse.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site-ui.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="music-player-page">
+<div id="wrapper">
+  <main id="main">
+    <section class="music-player" aria-labelledby="musicPlayerTitle">
+      <div class="music-player-heading">
+        <div>
+          <p class="eyebrow">BROWSER MUSIC PLAYER</p>
+          <h1 id="musicPlayerTitle">Music Player</h1>
+        </div>
+        <span class="player-status" id="playerStatus" role="status">READY</span>
+      </div>
+
+      <div class="now-playing">
+        <div class="track-copy">
+          <p class="eyebrow">NOW PLAYING</p>
+          <h2 id="trackTitle">Select a track</h2>
+          <p id="trackArtist">Your music, while you browse.</p>
+        </div>
+        <span id="trackPosition" class="track-position">00 / 00</span>
+      </div>
+
+      <div class="visualizer-wrap" aria-label="Audio visualizer">
+        <div id="visualizer" class="visualizer" aria-hidden="true"></div>
+        <div class="visualizer-base" aria-hidden="true"></div>
+      </div>
+
+      <div class="timeline">
+        <span id="currentTime" class="time-label">0:00</span>
+        <input id="timeline" class="range-control timeline-control" type="range" min="0" max="0" step="0.1" value="0" aria-label="Seek through track" disabled>
+        <span id="duration" class="time-label">0:00</span>
+      </div>
+
+      <div class="player-controls">
+        <div class="transport-controls" aria-label="Playback controls">
+          <button id="previousButton" class="icon-button" type="button" aria-label="Previous track" disabled>PREV</button>
+          <button id="playButton" class="play-button" type="button" aria-label="Play" disabled><span id="playIcon" aria-hidden="true">PLAY</span></button>
+          <button id="nextButton" class="icon-button" type="button" aria-label="Next track" disabled>NEXT</button>
+        </div>
+        <label class="volume-control" for="volume">
+          <span>VOL</span>
+          <input id="volume" class="range-control volume-range" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+          <output id="volumeValue" for="volume">80%</output>
+        </label>
+      </div>
+
+      <div class="playlist-heading">
+        <h2>Playlist</h2>
+        <span id="playlistCount">0 TRACKS</span>
+      </div>
+      <ol id="playlist" class="playlist" aria-label="Playlist"></ol>
+      <p id="emptyMessage" class="empty-message hidden">No tracks are available yet. Add your MP3 files to the <code>music</code> folder, following its README.</p>
+      <audio id="audioPlayer" preload="metadata"></audio>
+    </section>
+
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
